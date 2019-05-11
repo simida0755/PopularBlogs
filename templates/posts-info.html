@@ -1,0 +1,101 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}热门教程章节信息{% endblock %}
+
+{% block custom_bread %}
+    <section>
+        <div class="wp">
+		<div class="crumbs">
+			<ul>
+				<li><a href="{% url 'index' %}">首页</a>></li>
+                <li><a href="{% url 'course:posts_list' %}">热门博文</a>></li>
+                <li><a href="{% url 'course:posts_info' posts.id %}">{{ posts.name }}</a>></li>
+				<li>教程程章节</li>
+			</ul>
+		</div>
+	</div>
+    </section>
+{% endblock %}
+
+{% block custom_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/muke/base.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/muke/common-less.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/learn-less.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/muke/course/common-less.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mooc.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/aui.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <div id="main">
+    <div class="course-info-main clearfix w has-progress">
+
+        <div class="info-bar clearfix">
+        <div class="content-wrap clearfix">
+            <div class="content">
+
+
+                {% autoescape off %}
+                    {{ input_html }}
+                {% endautoescape %}
+            </div>
+
+            <div class="aside r">
+                <div class="bd">
+
+
+                    <div class="box mb40">
+                        <h4>博主介绍</h4>
+                        <div class="teacher-info">
+                            <a href="{% url 'blogger:blogger_desc' blogger.id  %}" target="_blank">
+                                <img src='{{ MEDIA_URL }}{{ blogger.image }}' width='80' height='80' />
+                            </a>
+        <span class="tit">
+          <a href="{% url 'blogger:blogger_desc' blogger.id  %}" target="_blank">{{ blogger.name }}</a>
+        </span>
+                            <span class="job">{{ blogger.work_position }}</span>
+                        </div>
+
+                        <div class="course-info-tip">
+
+                        </div>
+                    </div>
+
+                    <div class="cp-other-learned  js-comp-tabs">
+                        <div class="cp-header clearfix">
+                            <h2 class="cp-tit l">该类文章高赞推荐</h2>
+                        </div>
+                        <div class="cp-body">
+                            <div class="cp-tab-pannel js-comp-tab-pannel" data-pannel="course" style="display: block">
+                                <!-- img 200 x 112 -->
+                                <ul class="other-list">
+                                    {% for relate_posts in relate_posts %}
+                                    <li class="curr">
+                                        <a href="{% url 'course:posts' relate_posts.id %}" target="_blank">
+                                            <span class="name autowrap">{{ relate_posts.name }}</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>    </div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+
+</div>
+</div>
+{% endblock %}
+
+
+
+
+
+

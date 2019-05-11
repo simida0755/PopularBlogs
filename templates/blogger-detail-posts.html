@@ -1,0 +1,49 @@
+{#tempaltes/org-detail-course.html#}
+
+{% extends 'blogger_base.html' %}
+{% load staticfiles %}
+
+<title>{% block title %}热门博主详情列表页{% endblock %}</title>
+{% block page_path %}博主文章{% endblock %}
+
+{% block right_form %}
+    <div class="right companycenter layout">
+        <div class="head">
+            <h1>博主文章</h1>
+        </div>
+        <div class="brief group_list">
+                    {% for posts in all_posts.object_list %}
+
+                        <div class="des">
+                            <a href=""><h2>{{ posts.name }}</h2></a>
+                            <span class="fl">点赞数：<i class="key">{{ posts.like_nums }}</i></span>
+                            <span class="fr">点击数：{{ posts.click_nums }}</span>
+                            <span class="fr">收藏数：{{ posts.fav_nums }}</span>
+                            <span class="fr">所属平台：{{ posts.blogger.org.name }}</span>
+                        </div>
+                    {% endfor %}
+        </div>
+        <div class="pageturn">
+
+                <ul class="pagelist">
+                    {% if all_posts.has_previous %}
+                        <li class="long"><a href="?{{ all_posts.previous_page_number.querystring }}">上一页</a></li>
+                    {% endif %}
+                    {% for page in all_courses.pages %}
+                        {% if page %}
+                            {% ifequal page all_posts.number %}
+                                <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                            {% else %}
+                                <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                            {% endifequal %}
+                        {% else %}
+                            <li class="none"><a href="">...</a> </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if all_posts.has_next %}
+                        <li class="long"><a href="?{{ page.querystring }}">下一页</a></li>
+                    {% endif %}
+                </ul>
+             </div>
+    </div>
+{% endblock %}
