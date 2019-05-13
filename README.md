@@ -12,5 +12,5 @@
 教程展示页
 ![Image text](https://github.com/simida0755/PopularBlogs/blob/master/static/example/%E6%95%99%E7%A8%8B%E5%B1%95%E7%A4%BA%E9%A1%B5.png)
 教程详情页
-![Image text]https://github.com/simida0755/PopularBlogs/blob/master/static/example/%E6%95%99%E7%A8%8B%E8%AF%A6%E6%83%85%E9%A1%B5.png)
+![Image text](https://github.com/simida0755/PopularBlogs/blob/master/static/example/%E6%95%99%E7%A8%8B%E8%AF%A6%E6%83%85%E9%A1%B5.png)
 
